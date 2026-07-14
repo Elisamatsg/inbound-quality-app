@@ -18,6 +18,7 @@ pass_env = os.getenv("PASSWORD")
 
 st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide", initial_sidebar_state="expanded")
 
+# BLOCO ABAIXO PARA ESCONDER OS BOTÕES DO GITHUB E MENU
 st.markdown(
     """
     <style>
