@@ -21,21 +21,30 @@ st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide"
 st.markdown(
     """
     <style>
-    /* Esconde o botão do GitHub no Streamlit Cloud */
+    /* Esconde apenas o botão de Deploy/GitHub */
     .stAppDeployButton {
         display: none !important;
     }
-    /* Esconde o menu de três pontinhos */
+    
+    /* OBSOLETO NO STREAMLIT NOVO - Mantido por segurança para versões antigas */
     #MainMenu {
         visibility: hidden;
     }
-    /* Esconde o rodapé */
+    
+    /* Esconde o menu de opções padrão (três pontinhos) se ele aparecer */
+    [data-testid="stActionButtonIcon"] {
+        display: none !important;
+    }
+    
+    /* Esconde o rodapé 'Made with Streamlit' */
     footer {
         visibility: hidden;
     }
-    /* Remove a barra superior transparente */
+    
+    /* IMPORTANTE: Removemos a regra que escondia o 'header' inteiro. */
+    /* Agora, apenas limpamos o fundo do cabeçalho para não ficar uma barra cinza feia */
     header {
-        visibility: hidden;
+        background-color: transparent !important;
     }
     </style>
     """,
