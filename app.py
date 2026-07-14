@@ -22,30 +22,19 @@ st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide"
 st.markdown(
     """
     <style>
-    /* Esconde apenas o botão de Deploy/GitHub */
-    .stAppDeployButton {
+    /* 1. Esconde completamente os botões do lado direito do cabeçalho (GitHub, Fork e Menu) */
+    [data-testid="stAppToolbar"] {
         display: none !important;
     }
     
-    /* OBSOLETO NO STREAMLIT NOVO - Mantido por segurança para versões antigas */
-    #MainMenu {
-        visibility: hidden;
-    }
-    
-    /* Esconde o menu de opções padrão (três pontinhos) se ele aparecer */
-    [data-testid="stActionButtonIcon"] {
-        display: none !important;
-    }
-    
-    /* Esconde o rodapé 'Made with Streamlit' */
-    footer {
-        visibility: hidden;
-    }
-    
-    /* IMPORTANTE: Removemos a regra que escondia o 'header' inteiro. */
-    /* Agora, apenas limpamos o fundo do cabeçalho para não ficar uma barra cinza feia */
+    /* 2. Garante que o cabeçalho fique transparente para não cobrir nada */
     header {
         background-color: transparent !important;
+    }
+    
+    /* 3. Esconde o rodapé 'Made with Streamlit' */
+    footer {
+        visibility: hidden;
     }
     </style>
     """,
@@ -245,7 +234,7 @@ with st.sidebar:
     st.markdown("### Suporte")
     with st.expander("Precisa de ajuda?"):
         st.info("elisama gomes")
-        st.write("✉️ elisama.gomes@stellantis.com")
+        st.write("✉️ elisama@stellantis")
         st.write("📱 (81) 99999-9999")
 
     st.divider()
