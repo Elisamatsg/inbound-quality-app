@@ -22,19 +22,26 @@ st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide"
 st.markdown(
     """
     <style>
-    /* 1. Esconde completamente os botões do lado direito do cabeçalho (GitHub, Fork e Menu) */
-    [data-testid="stAppToolbar"] {
+    /* Força o desaparecimento de qualquer botão ou menu no topo direito */
+    .stAppDeployButton, 
+    [data-testid="stAppToolbar"], 
+    [data-testid="stActionButtonIcon"],
+    option-menu-themes {
         display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        width: 0px !important;
+        height: 0px !important;
     }
     
-    /* 2. Garante que o cabeçalho fique transparente para não cobrir nada */
+    /* Esconde a barra cinza de fundo do cabeçalho, mantendo apenas os botões funcionais */
     header {
-        background-color: transparent !important;
+        background: transparent !important;
     }
     
-    /* 3. Esconde o rodapé 'Made with Streamlit' */
+    /* Remove o rodapé padrão */
     footer {
-        visibility: hidden;
+        visibility: hidden !important;
     }
     </style>
     """,
