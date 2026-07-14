@@ -18,6 +18,30 @@ pass_env = os.getenv("PASSWORD")
 
 st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide", initial_sidebar_state="expanded")
 
+st.markdown(
+    """
+    <style>
+    /* Esconde o botão do GitHub no Streamlit Cloud */
+    .stAppDeployButton {
+        display: none !important;
+    }
+    /* Esconde o menu de três pontinhos */
+    #MainMenu {
+        visibility: hidden;
+    }
+    /* Esconde o rodapé */
+    footer {
+        visibility: hidden;
+    }
+    /* Remove a barra superior transparente */
+    header {
+        visibility: hidden;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.markdown("""
 <style>
 
