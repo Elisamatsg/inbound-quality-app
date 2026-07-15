@@ -27,10 +27,6 @@ st.markdown("""
 footer {
     visibility: hidden !important;}
 
-[data-testid="stAppToolbar"] a[href*="github.com"]:not([href*="fork"]) {
-        display: none !important;
-    }
-
 
 #MainMenu 
 {
