@@ -5,6 +5,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 import time
 
+import streamlit as st
+
 # IMPORTA E ATIVA O .env
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,6 +19,15 @@ pass_env = os.getenv("PASSWORD")
 
 
 st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide", initial_sidebar_state="expanded")
+
+st.header ()
+hide_st_style = """
+    <style>
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_st_style, unsafe_allow_html=true)
 
 # BLOCO ABAIXO PARA ESCONDER OS BOTÕES DO GITHUB E MENU
 
