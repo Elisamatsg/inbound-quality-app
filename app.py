@@ -26,6 +26,8 @@ st.markdown("""
 
 footer {
     visibility: hidden !important;}
+header {
+    visibility: hidden !important;}
 
 #MainMenu 
 {
@@ -34,6 +36,11 @@ footer {
 </style>
 """, unsafe_allow_html=True)
 
+def alternar_menu():
+    if st.session_state.sidebar_state == "expanded":
+        st.session_state.sidebar_state = "collapsed"
+    else:
+        st.session_state.sidebar_state = "expanded"
 
 st.markdown("""
 <style>
