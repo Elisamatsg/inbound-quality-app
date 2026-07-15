@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import time
 
-import streamlit as st
+
 
 # IMPORTA E ATIVA O .env
 from dotenv import load_dotenv
