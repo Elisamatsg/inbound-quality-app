@@ -5,8 +5,6 @@ import pandas as pd
 from datetime import datetime, timedelta
 import time
 
-
-
 # IMPORTA E ATIVA O .env
 from dotenv import load_dotenv
 load_dotenv()
@@ -14,9 +12,6 @@ load_dotenv()
 # AGORA PEGA AS VARIÁVEIS
 user_env = os.getenv("USER")
 pass_env = os.getenv("PASSWORD")
-
-#st.write(user_env) - > Para testar se está pegando a variável do .env
-
 
 st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide", initial_sidebar_state="expanded")
 
@@ -40,6 +35,7 @@ header {
 }
 </style>
 """, unsafe_allow_html=True)
+initial_sidebar_state="expanded" 
 
 
 st.markdown("""
