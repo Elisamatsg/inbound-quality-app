@@ -26,8 +26,6 @@ st.markdown("""
 
 footer {
     visibility: hidden !important;}
-header {
-    visibility: hidden !important;}
 
 #MainMenu 
 {
@@ -35,7 +33,6 @@ header {
 }
 </style>
 """, unsafe_allow_html=True)
-initial_sidebar_state="expanded" 
 
 
 st.markdown("""
