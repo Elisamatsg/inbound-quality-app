@@ -19,34 +19,33 @@ pass_env = os.getenv("PASSWORD")
 st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide", initial_sidebar_state="expanded")
 
 # BLOCO ABAIXO PARA ESCONDER OS BOTÕES DO GITHUB E MENU
-st.markdown(
-    """
-    <style>
-    /* Força o desaparecimento de qualquer botão ou menu no topo direito */
-    .stAppDeployButton, 
-    [data-testid="stAppToolbar"], 
-    [data-testid="stActionButtonIcon"],
-    option-menu-themes {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        width: 0px !important;
-        height: 0px !important;
-    }
-    
-    /* Esconde a barra cinza de fundo do cabeçalho, mantendo apenas os botões funcionais */
-    header {
-        background: transparent !important;
-    }
-    
-    /* Remove o rodapé padrão */
-    footer {
-        visibility: hidden !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
+st.markdown("""
+<style>
+
+/* Esconde somente o botão Deploy/Fork */
+.stAppDeployButton {
+    display: none !important;
+}
+
+/* Esconde elementos de status */
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
+/* Footer */
+footer {
+    visibility: hidden !important;
+}
+
+/* Menu hamburguer */
+#MainMenu {
+    visibility: hidden !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 
 st.markdown("""
 <style>
