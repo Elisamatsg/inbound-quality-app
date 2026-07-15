@@ -20,14 +20,6 @@ pass_env = os.getenv("PASSWORD")
 
 st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide", initial_sidebar_state="expanded")
 
-st.header ()
-hide_st_style = """
-    <style>
-        footer {visibility: hidden;}
-        header {visibility: hidden;}
-        </style>
-        """
-st.markdown(hide_st_style, unsafe_allow_html=true)
 
 # BLOCO ABAIXO PARA ESCONDER OS BOTÕES DO GITHUB E MENU
 
@@ -38,8 +30,9 @@ st.markdown("""
 }
 
 footer {
-    visibility: hidden !important;
-}
+    visibility: hidden !important;}
+header {
+    visibility: hidden;}
 
 #MainMenu {
     visibility: hidden !important;
