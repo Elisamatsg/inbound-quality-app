@@ -32,9 +32,10 @@ st.markdown("""
 footer {
     visibility: hidden !important;}
 header {
-    visibility: hidden;}
+    visibility: hidden !important;}
 
-#MainMenu {
+#MainMenu 
+{
     visibility: hidden !important;
 }
 </style>
