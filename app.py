@@ -22,27 +22,17 @@ st.set_page_config(page_title="Inbound Quality", page_icon="🚚", layout="wide"
 
 st.markdown("""
 <style>
-
-/* Esconde somente o botão Deploy/Fork */
 .stAppDeployButton {
     display: none !important;
 }
 
-/* Esconde elementos de status */
-[data-testid="stStatusWidget"] {
-    display: none !important;
-}
-
-/* Footer */
 footer {
     visibility: hidden !important;
 }
 
-/* Menu hamburguer */
 #MainMenu {
     visibility: hidden !important;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
