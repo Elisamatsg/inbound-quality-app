@@ -120,7 +120,7 @@ if not st.session_state.autenticado:
         with st.container(border=True):
             st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
             st.image("https://1000logos.net/wp-content/uploads/2024/04/Stellantis-Logo.png", width=180)
-            st.title("Auditoria de Recebimento 🚚")
+            st.title("Auditoria de Recebimento")
             st.caption("CDC - Inbound Quality")
             st.markdown("</div>", unsafe_allow_html=True)
             
@@ -441,3 +441,4 @@ elif st.session_state.menu_selecionado == "📊 Painel visual":
                 df_bruto['Data hora'] = df_bruto['Data hora'].dt.strftime('%d/%m/%Y %H:%M:%S')
                 
                 st.dataframe(df_bruto, use_container_width=True)
+
