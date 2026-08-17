@@ -190,7 +190,7 @@ if 'form_key' not in st.session_state:
 
 # Define valor inicial ANTES de usar
 if "menu_selecionado" not in st.session_state:
-    st.session_state.menu_selecionado = " Monitor inspeção"
+    st.session_state.menu_selecionado = "Monitor inspeção"
 
 with st.sidebar:
     st.image("https://1000logos.net/wp-content/uploads/2024/04/Stellantis-Logo.png", width=160)
@@ -200,12 +200,12 @@ with st.sidebar:
     st.divider()
 
     if "menu_selecionado" not in st.session_state:
-        st.session_state.menu_selecionado = " Monitor inspeção"
+        st.session_state.menu_selecionado = "Monitor inspeção"
 
     st.markdown('<div class="menu-container">', unsafe_allow_html=True)
 
     # BOTÃO 1
-    classe = "menu-btn-active" if st.session_state.menu_selecionado == " Monitor inspeção" else "menu-btn"
+    classe = "menu-btn-active" if st.session_state.menu_selecionado == "Monitor inspeção" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
     if st.button("Monitor inspeção", use_container_width=True):
         st.session_state.menu_selecionado = "Monitor inspeção"
@@ -216,7 +216,7 @@ with st.sidebar:
     classe = "menu-btn-active" if st.session_state.menu_selecionado == "Painel visual" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
     if st.button("Painel visual", use_container_width=True):
-        st.session_state.menu_selecionado = " Painel visual"
+        st.session_state.menu_selecionado = "Painel visual"
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -244,7 +244,7 @@ with st.sidebar:
 # ==========================================
 # 3. MONITOR INSPEÇÃO (DOCA)
 # ==========================================
-if st.session_state.menu_selecionado == " Monitor inspeção":
+if st.session_state.menu_selecionado == "Monitor inspeção":
 
     st.header("INSPEÇÃO DE RECEBIMENTO")
     
@@ -459,6 +459,7 @@ elif st.session_state.menu_selecionado == "Painel visual":
                 df_bruto['Data hora'] = df_bruto['Data hora'].dt.strftime('%d/%m/%Y %H:%M:%S')
                 
                 st.dataframe(df_bruto, use_container_width=True)
+
 
 
 
