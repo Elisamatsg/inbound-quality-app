@@ -216,7 +216,7 @@ with st.sidebar:
     classe = "menu-btn-active" if st.session_state.menu_selecionado == " Painel visual" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
     if st.button(" Painel visual", use_container_width=True):
-        st.session_state.menu_selecionado = "📊 Painel visual"
+        st.session_state.menu_selecionado = " Painel visual"
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -459,5 +459,6 @@ elif st.session_state.menu_selecionado == "Painel visual":
                 df_bruto['Data hora'] = df_bruto['Data hora'].dt.strftime('%d/%m/%Y %H:%M:%S')
                 
                 st.dataframe(df_bruto, use_container_width=True)
+
 
 
