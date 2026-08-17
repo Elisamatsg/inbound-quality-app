@@ -207,15 +207,15 @@ with st.sidebar:
     # BOTÃO 1
     classe = "menu-btn-active" if st.session_state.menu_selecionado == " Monitor inspeção" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
-    if st.button(" Monitor inspeção", use_container_width=True):
-        st.session_state.menu_selecionado = " Monitor inspeção"
+    if st.button("Monitor inspeção", use_container_width=True):
+        st.session_state.menu_selecionado = "Monitor inspeção"
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
     # BOTÃO 2
-    classe = "menu-btn-active" if st.session_state.menu_selecionado == " Painel visual" else "menu-btn"
+    classe = "menu-btn-active" if st.session_state.menu_selecionado == "Painel visual" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
-    if st.button(" Painel visual", use_container_width=True):
+    if st.button("Painel visual", use_container_width=True):
         st.session_state.menu_selecionado = " Painel visual"
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
@@ -459,6 +459,7 @@ elif st.session_state.menu_selecionado == "Painel visual":
                 df_bruto['Data hora'] = df_bruto['Data hora'].dt.strftime('%d/%m/%Y %H:%M:%S')
                 
                 st.dataframe(df_bruto, use_container_width=True)
+
 
 
 
