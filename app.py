@@ -190,7 +190,7 @@ if 'form_key' not in st.session_state:
 
 # Define valor inicial ANTES de usar
 if "menu_selecionado" not in st.session_state:
-    st.session_state.menu_selecionado = "📱 Monitor inspeção"
+    st.session_state.menu_selecionado = " Monitor inspeção"
 
 with st.sidebar:
     st.image("https://1000logos.net/wp-content/uploads/2024/04/Stellantis-Logo.png", width=160)
@@ -200,22 +200,22 @@ with st.sidebar:
     st.divider()
 
     if "menu_selecionado" not in st.session_state:
-        st.session_state.menu_selecionado = "📱 Monitor inspeção"
+        st.session_state.menu_selecionado = " Monitor inspeção"
 
     st.markdown('<div class="menu-container">', unsafe_allow_html=True)
 
     # BOTÃO 1
-    classe = "menu-btn-active" if st.session_state.menu_selecionado == "📱 Monitor inspeção" else "menu-btn"
+    classe = "menu-btn-active" if st.session_state.menu_selecionado == " Monitor inspeção" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
-    if st.button("📱 Monitor inspeção", use_container_width=True):
-        st.session_state.menu_selecionado = "📱 Monitor inspeção"
+    if st.button(" Monitor inspeção", use_container_width=True):
+        st.session_state.menu_selecionado = " Monitor inspeção"
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
     # BOTÃO 2
-    classe = "menu-btn-active" if st.session_state.menu_selecionado == "📊 Painel visual" else "menu-btn"
+    classe = "menu-btn-active" if st.session_state.menu_selecionado == " Painel visual" else "menu-btn"
     st.markdown(f'<div class="{classe}">', unsafe_allow_html=True)
-    if st.button("📊 Painel visual", use_container_width=True):
+    if st.button(" Painel visual", use_container_width=True):
         st.session_state.menu_selecionado = "📊 Painel visual"
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
@@ -244,12 +244,12 @@ with st.sidebar:
 # ==========================================
 # 3. MONITOR INSPEÇÃO (DOCA)
 # ==========================================
-if st.session_state.menu_selecionado == "📱 Monitor inspeção":
+if st.session_state.menu_selecionado == " Monitor inspeção":
 
     st.header("INSPEÇÃO DE RECEBIMENTO")
     
     with st.container(border=True):
-        st.markdown("#### 📄 1. Dados da Carga")
+        st.markdown("#### 1. Dados da Carga")
         col1, col2, col3 = st.columns(3)
         with col1:
             n_viagem = st.text_input("N° da viagem", key=f"n_viagem_{st.session_state.form_key}")
@@ -259,7 +259,7 @@ if st.session_state.menu_selecionado == "📱 Monitor inspeção":
             transportadora = st.text_input("Transportadora", key=f"transp_{st.session_state.form_key}").strip().upper()
             
     with st.container(border=True):
-        st.markdown("#### 📦 2. Volumetria da Carga")
+        st.markdown("#### 2. Volumetria da Carga")
         col_t, col_ko = st.columns(2)
         with col_t:
             total_embalagens = st.number_input("Total de Embalagens na Carreta", min_value=1, step=1, value=30, key=f"total_emb_{st.session_state.form_key}")
@@ -269,9 +269,9 @@ if st.session_state.menu_selecionado == "📱 Monitor inspeção":
         embalagens_ok = total_embalagens - embalagens_ko
         
         if embalagens_ko == 0:
-            st.success(f"✅ Carga 100% Íntegra: {embalagens_ok} embalagens OK. Pronta para registrar!")
+            st.success(f" Carga 100% Íntegra: {embalagens_ok} embalagens OK. Pronta para registrar!")
         else:
-            st.warning(f"⚠️ Atenção: {embalagens_ko} KOs e {embalagens_ok} OKs. Detalhe as avarias abaixo.")
+            st.warning(f" Atenção: {embalagens_ko} KOs e {embalagens_ok} OKs. Detalhe as avarias abaixo.")
 
     # Valores padrão caso não haja avaria
     base_embalagem, stretch, caixas, observacoes, foto = "🟢 Aprovado", "🟢 Aprovado", "🟢 Aprovadas", "", None
@@ -284,16 +284,34 @@ if st.session_state.menu_selecionado == "📱 Monitor inspeção":
             stretch = st.radio("Filme Stretch / Amarração", ["🟡 Atenção (Frouxo/Solto)", "🔴 Crítico (Rasgado/Ausente)"], horizontal=True, key=f"stretch_{st.session_state.form_key}")
             caixas = st.radio("Integridade das Caixas", ["🟡 Avariadas (Amassadas)", "🔴 Violadas (Rasgadas/Vazando)"], horizontal=True, key=f"caixas_{st.session_state.form_key}")
             
-            foto = st.camera_input("Capturar imagem representativa das avarias", key=f"foto_{st.session_state.form_key}")
+            # Seleção do método de imagem (Câmera ou Upload)
+        metodo_foto = st.radio(
+            "Origem da imagem das avarias:",
+            options=["Câmera", "Upload (Galeria / Arquivo)"],
+            horizontal=True,
+            key=f"metodo_foto_{st.session_state.form_key}"
+        )
+
+        if metodo_foto == "Câmera":
+            foto = st.camera_input(
+                "Capturar imagem representativa das avarias", 
+                key=f"foto_{st.session_state.form_key}"
+            )
+        else:
+            foto = st.file_uploader(
+                "Selecione uma imagem da galeria ou computador", 
+                type=["png", "jpg", "jpeg"], 
+                key=f"upload_{st.session_state.form_key}"
+            )
             observacoes = st.text_area("Observações (Opcional)", placeholder="Ex: A carga tombou no baú...", key=f"obs_{st.session_state.form_key}")
 
     st.write("") 
     
     col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
     with col_btn2:
-        if st.button("🚀 Gravar Inspeção", use_container_width=True, type="primary"):
+        if st.button("Gravar Inspeção", use_container_width=True, type="primary"):
             if not n_viagem or not fornecedor or not transportadora:
-                st.error("⚠️ N° da viagem, Fornecedor e Transportadora são obrigatórios!")
+                st.error("N° da viagem, Fornecedor e Transportadora são obrigatórios!")
             else:
                 data_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 caminho_foto = salvar_foto(foto)
@@ -319,9 +337,9 @@ if st.session_state.menu_selecionado == "📱 Monitor inspeção":
 # ==========================================
 # 4. PAINEL VISUAL (MÉTRICAS + FORNECEDOR/TRANSP)
 # ==========================================
-elif st.session_state.menu_selecionado == "📊 Painel visual":
+elif st.session_state.menu_selecionado == "Painel visual":
 
-    st.header("📈 Dashboard de Inbound Quality")
+    st.header("Dashboard de Inbound Quality")
     
     # 1. Carrega os dados do banco
     conn = sqlite3.connect('inspecoes_v4.db')
@@ -335,7 +353,7 @@ elif st.session_state.menu_selecionado == "📊 Painel visual":
         df['data_hora'] = pd.to_datetime(df['data_hora'])
         
         # 2. CRIANDO O FILTRO DE DATAS
-        st.markdown("### 📅 Período")
+        st.markdown("### Período")
         
         # Pega a menor e a maior data que existem no seu banco para definir o calendário
         data_minima = df['data_hora'].min().date()
@@ -377,14 +395,14 @@ elif st.session_state.menu_selecionado == "📊 Painel visual":
 
             with st.container(border=True):
                 col1, col2, col3, col4 = st.columns(4)
-                col1.metric("🚚 Viagens Recebidas", len(df_filtrado))
-                col2.metric("📦 Volume Total (Embalagens)", total_volume)
-                col3.metric("⚠️ Volume Avariado (KOs)", total_ko)
-                col4.metric("🏆 Health Score", f"{taxa_saude_volume:.1f}%")
+                col1.metric("Viagens Recebidas", len(df_filtrado))
+                col2.metric("Volume Total (Embalagens)", total_volume)
+                col3.metric("Volume Avariado (KOs)", total_ko)
+                col4.metric("Health Score", f"{taxa_saude_volume:.1f}%")
 
             st.info(f"💡 Em {len(df_filtrado)} viagens recebidas neste período, **{viagens_com_problema}** apresentaram avarias.")
 
-            aba1, aba2, aba3 = st.tabs(["🏭 Análise de Fornecedores", "🚛 Análise de Transportadoras", "📋 Histórico Base de Dados"])
+            aba1, aba2, aba3 = st.tabs(["Análise de Fornecedores", "Análise de Transportadoras", "Histórico Base de Dados"])
 
             # ABA 1: FORNECEDORES
             with aba1:
@@ -441,4 +459,5 @@ elif st.session_state.menu_selecionado == "📊 Painel visual":
                 df_bruto['Data hora'] = df_bruto['Data hora'].dt.strftime('%d/%m/%Y %H:%M:%S')
                 
                 st.dataframe(df_bruto, use_container_width=True)
+
 
